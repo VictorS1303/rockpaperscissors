@@ -1,0 +1,244 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  user-select: none;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #444059;
+  font-family: 'Luckiest Guy', cursive;
+  color: #eee;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4vw;
+}
+
+#gamefield {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+}
+
+#player1 {
+  --rot: 1;
+  height: 300px;
+  width: 300px;
+}
+
+#player2 {
+  --rot: -1;
+  height: 300px;
+  width: 300px;
+}
+
+.player {
+  transform: scale(var(--rot),1);
+  width: 40vw;
+  height: 40vw;
+  background-size: 100%;
+  background-image: url('images/hand_rock.png');
+}
+
+.player.rock {
+  background-image: url('images/hand_rock.png');
+}
+
+.player.paper {
+  background-image: url('images/hand_paper.png');
+}
+
+.player.scissors {
+  background-image: url('images/hand_scissors.png');
+}
+
+.shake {
+  background-image: url('images/hand_rock.png');
+  transform-origin: left center;
+  animation: shake 1.8s ease-in 1 forwards;
+}
+
+@keyframes shake {
+  0% {
+    transform: scale(var(--rot),1) translateX(calc((var(--rot) - 1) * 50%)) rotate(0deg);
+  }
+  16% {
+    transform: scale(var(--rot),1) translateX(calc((var(--rot) - 1) * 50%)) rotate(-40deg);
+  }
+  24% {
+    transform: scale(var(--rot),1) translateX(calc((var(--rot) - 1) * 50%)) rotate(5deg);
+  }
+  32% {
+    transform: scale(var(--rot),1) translateX(calc((var(--rot) - 1) * 50%)) rotate(0deg);
+  }
+  48% {
+    transform: scale(var(--rot),1) translateX(calc((var(--rot) - 1) * 50%)) rotate(-40deg);
+  }
+  56% {
+    transform: scale(var(--rot),1) translateX(calc((var(--rot) - 1) * 50%)) rotate(5deg);
+  }
+  64% {
+    transform: scale(var(--rot),1) translateX(calc((var(--rot) - 1) * 50%)) rotate(0deg);
+  }
+  80% {
+    transform: scale(var(--rot),1) translateX(calc((var(--rot) - 1) * 50%)) rotate(-40deg);
+  }
+  96% {
+    transform: scale(var(--rot),1) translateX(calc((var(--rot) - 1) * 50%)) rotate(5deg);
+  }
+  100% {
+    transform: scale(var(--rot),1) translateX(calc((var(--rot) - 1) * 50%)) rotate(0deg);
+  }
+}
+
+#texts {
+  position: absolute;
+  width: 100%;
+  margin-top: 10vw;
+  pointer-events: none;
+}
+
+#texts h1 {
+  color: #ffde53;
+  text-shadow: 4px 4px 1px red, -4px -4px 1px red, 4px -4px 1px red, -4px 4px 1px red;
+}
+
+.hidden {
+  display: none;
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 60px;
+}
+
+#buttons.disabled button {
+  filter: grayscale(100%) brightness(.75);
+}
+
+#buttons button {
+  background-size: 100%;
+  border-radius: 10vw;
+  width: 10vw;
+  height: 10vw;
+  transition: filter .8s, box-shadow .2s ease-in;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#buttons button:hover
+{
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+}
+
+#buttons button:active
+{
+  scale: .98;
+  transition: none;
+  box-shadow: none;
+}
+
+button.rock {
+  background-image: url('images/button_rock.png');
+}
+
+button.paper {
+  background-image: url('images/button_paper.png');
+}
+
+button.scissors {
+  background-image: url('images/button_scissors.png');
+}
+
+/* Win Screen */
+.win-screen
+{
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #444059;
+  height: 400px;
+  width: 850px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+  border-radius: 10px;
+  border: 2px solid #fff;
+  transition: top .4s ease-in;
+}
+
+.win-screen.active
+{
+  top: 50%;
+  transition: top .4s ease-in;
+}
+
+.win-screen h1
+{
+  font-size: 4rem;
+  margin-top: 20px;
+}
+
+
+.choices
+{
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.choices,
+.choices > div
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.choices > div
+{
+  flex-direction: column;
+}
+
+.choices > div img
+{
+  height: 150px;
+  margin: 0 auto;
+  align-content: center;
+  text-align: center;
+}
+
+button.btn.try-again-btn
+{
+  font-family: inherit;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 15px;
+  width: 300px;
+  background-color: #fff;
+  color: #444059;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  border-radius: calc(10px / 2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0,.3);
+  cursor: pointer;
+}
+
+button.btn.try-again-btn:active
+{
+  transform: scale(.98) translateX(-50%);
+  box-shadow: none;
+}
