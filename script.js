@@ -159,7 +159,7 @@ function updateComputerHandImage(randomIndex)
     const choices = ['rock', 'paper', 'scissors']
     
     /*
-        Since the hand images have been brought in as a NodeList, they can be access accessed as indexes in an array.
+        Since the hand images have been brought in as a NodeList, they can be accessed as indexes in an array.
         Here, the element at index 0 is the user.
 
         Adding the "shake" class to the computer hand image
